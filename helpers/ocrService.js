@@ -1,5 +1,5 @@
 const { initializeWorker } = require("./tesseractWorker");
-
+const { getIndices } = require("./getIndices");
 /**
  * Asynchronously performs Optical Character Recognition (OCR) on the given image file.
  *
@@ -10,13 +10,13 @@ const ocr = async (imagePath) => {
   let worker;
   try {
     worker = await initializeWorker();
-    const ret = await worker.recognize(imagePath);
-    const pattern = /\d+\.\s*([^.\[]+)/g;
-    const matches = ret.data.text.match(pattern);
+    const responseFromTesseract = await worker.recognize(imagePath);
+    const solution = getIndices(responseFromTesseract?.data?.text);
     return {
-      questions: matches.map((match) => match.trim()),
-      exactParsedPattern: ret.data.text,
+      solution: solution,
+      // exactParsedPattern: responseFromTesseract.data.text,
     };
+    
   } catch (error) {
     console.error("Error in OCR processing:", error.message);
     throw error;
