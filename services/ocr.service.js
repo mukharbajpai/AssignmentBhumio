@@ -1,4 +1,4 @@
-const { initializeWorker } = require("../dependencies/tesseract-worker");
+const { initializeWorker } = require("../helpers/tesseract-worker");
 
 const ocr = async (imagePath) => {
   let worker;
