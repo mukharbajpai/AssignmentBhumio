@@ -16,7 +16,6 @@ Clone the repository by using ``` git clone ``` command.
 
 ## Installing
 Navigate to the projetc repository and install the required dependencies using ```npm i```
-Installation instructions.
 
 ## Usage
 Once the dependencies are installed nodemon will start running locally.
