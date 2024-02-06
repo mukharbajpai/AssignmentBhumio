@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aicommits": "^1.11.0",
     "amazon-textract-response-parser": "^0.3.1",
     "aws-sdk": "^2.1545.0",
     "dotenv": "^16.4.1",
