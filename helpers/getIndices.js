@@ -8,21 +8,24 @@ const getIndices = (searchText) => {
     const solution = [];
     const lines = searchText?.split("\n");
     for (const line of lines) {
-        const lineNumber = Number(line.split(".")[0]);
-
-        if (isNaN(lineNumber) || !line.toLowerCase().includes("unkn")) continue;
+        const key = Number(line.split(".")[0]);
+        /*
+        This code snippet checks if the variable key is not a number, 
+        or if the string line does not include the substring "unkn" (case insensitive). If either condition is true, 
+        the loop continues to the next iteration.
+        */
+        if (isNaN(key) || !line.toLowerCase().includes("unkn")) continue;
 
         const ansLetters = line.split("Yes")[1];
-        let lineResult = "Yes";
+        let value = "Yes";
 
         if (ansLetters.toLowerCase().split("unkn")[0].includes("no")) {
-            lineResult = "No";
+            value = "No";
         }
         solution.push({
-            lineNumber,
-            lineResult
+            key,
+            value
         })
-        // console.log(lineNumber, "=>", lineResult, "\n");
     }
     return solution;
 }

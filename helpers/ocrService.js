@@ -19,7 +19,7 @@ const ocr = async (imagePath) => {
     
   } catch (error) {
     console.error("Error in OCR processing:", error.message);
-    throw error;
+    throw new Error("Error in OCR processing. Please make sure tessearct worker got initialised correctly!");
   } finally {
     if (worker) {
       await worker.terminate();

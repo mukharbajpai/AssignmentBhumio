@@ -7,21 +7,21 @@ const ocr = require("./ocrService");
  * @param {Object} res - the response object
  * @return {Promise} a Promise that resolves with the parsed response or rejects with an error
  */
-const parseUploadedDocument = async (req, res) => {
-  if (!req.file) {
-    return res.status(422).send("Please attach a file to file key");
+const parseDocument = async (req, res) => {
+  if (!req?.file) {
+    return res?.status(422).send("Please upload a file alog with POST request!!");
   }
-
+  const uploadRootPath = `uploads/`;
   try {
-    const imagePath = "uploads/" + (req.file ? req.file.filename : '');
+    const imagePath = uploadRootPath + (req.file ? req.file.filename : '');
     const parsedResponse = await ocr(imagePath);
     return res.status(200).json(parsedResponse);
   } catch (error) {
-    console.error("Error in /upload endpoint:", error.message);
-    return res.status(500).send("Internal Server Error!!");
+    console.error("Error in /upload endpoint:", error?.message);
+    return res.status(500).send("Something went wrong while processihg the request!!");
   }
 };
 
 module.exports = {
-  parseUploadedDocument,
+  parseDocument,
 };
