@@ -1,4 +1,4 @@
-const ocr = require("./ocr.service");
+const ocr = require("./ocrService");
 
 /**
  * Parse the uploaded document, perform OCR on the image, and send the parsed response.

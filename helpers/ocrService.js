@@ -1,5 +1,11 @@
-const { initializeWorker } = require("./tesseract-worker");
+const { initializeWorker } = require("./tesseractWorker");
 
+/**
+ * Asynchronously performs Optical Character Recognition (OCR) on the given image file.
+ *
+ * @param {string} imagePath - the file path of the image to be processed
+ * @return {object} an object containing the recognized questions and the exact parsed text pattern
+ */
 const ocr = async (imagePath) => {
   let worker;
   try {

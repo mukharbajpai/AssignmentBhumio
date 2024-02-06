@@ -1,7 +1,6 @@
-// Hello This is a temporary Mock Comment
 const express = require("express");
 const multer = require("multer");
-const { parseUploadedDocument } = require("./helpers/ocr.controller");
+const { parseUploadedDocument } = require("./helpers/ocrController");
 
 const app = express();
 app.use(express.json());
